@@ -43,7 +43,7 @@ end
 -- Parametry:
 --    year, month, day  - data (np. 2025, 6, 16)
 --    hour, minute      - czas (np. 12, 0)
---    lat, lon          - współrzędne geograficzne (stopnie), np. 51.44, 21.18
+--    lat, lon          - współrzędne geograficzne (stopnie)
 --
 -- Uwaga: Dla Polski przyjmujemy stały offset = 1 (UTC+1). Aby uwzględnić czas letni należy zmienić na 2.
 local function solar_position(year, month, day, hour, minute, lat, lon)
@@ -77,3 +77,8 @@ local function solar_position(year, month, day, hour, minute, lat, lon)
 
   return elev, azimuth
 end
+--------------------------------------------------
+
+	local elevation, azimuth = solar_position(CLU01->Year, CLU01->Month, CLU01->Day, CLU01->Hour, CLU01->Minute, CLU01->Kalendarz_Zmierzch_Swit->Latitude, CLU01->Kalendarz_Zmierzch_Swit->Longitude)
+	CLU01->cecha_wysokosc_slonca=elevation
+	CLU01->cecha_azymut_slonca=azimuth
